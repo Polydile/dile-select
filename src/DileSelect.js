@@ -96,10 +96,17 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
 
   constructor() {
     super();
-    this._createItemsArray();
     this.placeholder = 'Select';
   }
 
+  get items() {
+    let items = [];
+    let domItems = this.children;
+    for (let ele of domItems) {
+      items.push(ele);
+    }
+    return items;
+  }
   _createItemsArray() {
       this.items = [];
       let domItems = this.children;

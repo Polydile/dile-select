@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background: #fafafa;
@@ -22,7 +22,7 @@
     render(
       html`
         
-        <h1>Redondeados y con borde</h1>
+        <h1>&lt;dile-select&gt; demos</h1>
         <style>
           .con-borde-y-redondeado dile-select {
             --dile-select-border-width: 2px;
@@ -30,7 +30,8 @@
           }
         </style>
         <div class="con-borde-y-redondeado">
-          <h2>Regular select component</h1> 
+          <h2>Regular uninitialized component</h2> 
+          <p>The component is uninitialized, so the placeholder apears and initial value is undefined.</p>
           <dile-select placeholder="Select one" uninitialized @dile-select-changed="${e => {
             document.getElementById('msg').innerText = `Seleccionado ${e.detail.selectedText} (value: ${e.detail.value})`;
           }}">
@@ -54,6 +55,7 @@
             }
           </style>
           <h2>Initial value configured to "pear"</h2>
+          <p>Styled component, initialized by setting the dile-select "value" property</p>
           <dile-select value="pear" class="custom" placeholder="Select a fruit">
             <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
             <dile-select-item value="pear">Pear</dile-select-item>
@@ -62,7 +64,8 @@
             <dile-select-item value="passion_fruit">True passion fruit</dile-select-item>
           </dile-select>
 
-          <h2>Width customized to 300px</h2>
+          <h2>Width customized initialized by default</h2>
+          <p>If the component is not uninitialized (uninitialized boolean property is not set a true), then the first element is initialized by default, using the first select item (regular behavior of the regular select form elements).</p>
           <style>
             .customizeda {
               --dile-select-width: 300px;
@@ -72,7 +75,7 @@
               --dile-select-selected-background-color: #f5f5cc;
             }
           </style>
-          <dile-select class="customizeda" uninitialized>
+          <dile-select class="customizeda" placeholder="Select your country">
             <dile-select-item value="spain">Spain</dile-select-item>
             <dile-select-item value="france">France</dile-select-item>
             <dile-select-item value="germany">Germany</dile-select-item>
@@ -86,6 +89,8 @@
               --dile-select-selected-text-color: #fff; 
             }
           </style>
+          <p>Just adjusting the --dile-select-width to 100%. Also there are some styles in the selected item.</p>
+
           <dile-select class="customized2" placeholder="Select your country">
             <dile-select-item value="spain">Spain</dile-select-item>
             <dile-select-item value="france">France</dile-select-item>
@@ -98,7 +103,8 @@
               --dile-select-width: 150px;
             }
           </style>
-          <dile-select class="customized3" placeholder="Select your country">
+          <p>If the --dile-select-width custom propery is a size smaller than the text of the item fields, then the text cuts using css styles.</p>
+          <dile-select class="customized3" placeholder="Select your country" value="congo">
             <dile-select-item value="spain">Spain</dile-select-item>
             <dile-select-item value="france">France</dile-select-item>
             <dile-select-item value="germany">Germany</dile-select-item>
@@ -116,7 +122,8 @@
           }
         </style>
         <div class="conborde">
-          <h2>Regular select component</h1> 
+          <h2>Regular select component</h2> 
+          <p>This element has square borders.</p>
           <dile-select>
             <dile-select-item value="one">First item</dile-select-item>
             <dile-select-item value="two">Second item</dile-select-item>
@@ -124,55 +131,25 @@
             <dile-select-item value="more">One more</dile-select-item>
           </dile-select>
 
-          <h2>Initial value configured to "pear"</h2>
-          <dile-select value="pear">
-            <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
-            <dile-select-item value="pear">Pear</dile-select-item>
-            <dile-select-item value="apple">Apple</dile-select-item>
-            <dile-select-item value="orange">Orange</dile-select-item>
-            <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
-          </dile-select>
-
           <h2>Width customized to 300px</h2>
           <style>
             dile-select.customizedx {
               --dile-select-width: 300px;
               --dile-select-border-color: #3cd;
-              --dile-select-border-width: 4px;
+              --dile-select-border-width: 5px;
             }
           </style>
+          <p>Styled border with --dile-select-border-width: 5px;
+            <br>
+            Please note that only supports border sized in px.</p>
+
           <dile-select class="customizedx">
             <dile-select-item value="spain">Spain</dile-select-item>
             <dile-select-item value="france">France</dile-select-item>
             <dile-select-item value="germany">Germany</dile-select-item>
           </dile-select>
 
-          <h2>Width customized to 100%</h2>
-          <style>
-            .customized2 {
-              --dile-select-width: 100%;
-            }
-          </style>
-          <dile-select class="customized2">
-            <dile-select-item value="spain">Spain</dile-select-item>
-            <dile-select-item value="france">France</dile-select-item>
-            <dile-select-item value="germany">Germany</dile-select-item>
-          </dile-select>
-
-          <h2>Width customized to 150px</h2>
-          <style>
-            .customized3 {
-              --dile-select-width: 150px;
-            }
-          </style>
-          <dile-select class="customized3">
-            <dile-select-item value="spain">Spain</dile-select-item>
-            <dile-select-item value="france">France</dile-select-item>
-            <dile-select-item value="germany">Germany</dile-select-item>
-            <dile-select-item value="congo">Democratic Republic of the Congo</dile-select-item>
-          </dile-select>
-        </div>  
-        
+        </div>
 
 
         <style>
@@ -181,7 +158,8 @@
           }
         </style>
         <div class="sinborderectangular">
-          <h2>Regular select component</h1> 
+          <h2>Regular select component</h2> 
+          <p>Without borders and square element. --dile-select-border-radius: 0;</p>
           <dile-select>
             <dile-select-item value="one">First item</dile-select-item>
             <dile-select-item value="two">Second item</dile-select-item>
@@ -189,59 +167,11 @@
             <dile-select-item value="more">One more</dile-select-item>
           </dile-select>
 
-          <h2>Initial value configured to "pear"</h2>
-          <dile-select value="pear">
-            <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
-            <dile-select-item value="pear">Pear</dile-select-item>
-            <dile-select-item value="apple">Apple</dile-select-item>
-            <dile-select-item value="orange">Orange</dile-select-item>
-            <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
-          </dile-select>
-
-          <h2>Width customized to 300px</h2>
-          <style>
-            .customized {
-              --dile-select-width: 300px;
-              
-            }
-          </style>
-          <dile-select class="customized">
-            <dile-select-item value="spain">Spain</dile-select-item>
-            <dile-select-item value="france">France</dile-select-item>
-            <dile-select-item value="germany">Germany</dile-select-item>
-          </dile-select>
-
-          <h2>Width customized to 100%</h2>
-          <style>
-            .customized2 {
-              --dile-select-width: 100%;
-            }
-          </style>
-          <dile-select class="customized2">
-            <dile-select-item value="spain">Spain</dile-select-item>
-            <dile-select-item value="france">France</dile-select-item>
-            <dile-select-item value="germany">Germany</dile-select-item>
-          </dile-select>
-
-          <h2>Width customized to 150px</h2>
-          <style>
-            .customized3 {
-              --dile-select-width: 150px;
-            }
-          </style>
-          <dile-select class="customized3">
-            <dile-select-item value="spain">Spain</dile-select-item>
-            <dile-select-item value="france">France</dile-select-item>
-            <dile-select-item value="germany">Germany</dile-select-item>
-            <dile-select-item value="congo">Democratic Republic of the Congo</dile-select-item>
-          </dile-select>
-        </div>
-
-        
-
+      </div>
 
         <div>
-          <h2>Regular select component</h1> 
+          <h2>Regular select component</h2> 
+          <p>This element has only the default styles and default configurations.</p>
           <dile-select>
             <dile-select-item value="one">First item</dile-select-item>
             <dile-select-item value="two">Second item</dile-select-item>
@@ -251,52 +181,20 @@
 
           <h2>Element whith a big text... </h2>
           <p>if you don't want to expand to much the interface, you will need to size it with --dile-select-width</p>
-          <dile-select value="pear" style="--dile-select-width: 100%;">
-            <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
-            <dile-select-item value="pear">Pear</dile-select-item>
+          <dile-select style="--dile-select-width: 100%;">
             <dile-select-item value="apple">Apple</dile-select-item>
             <dile-select-item value="Orange">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi quaerat iusto voluptatum, corrupti cumque accusamus ut doloremque reprehenderit architecto distinctio</dile-select-item>
             <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
           </dile-select>
-
-          <h2>Width customized to 300px</h2>
-          <style>
-            .customized {
-              --dile-select-width: 300px;
-              
-            }
-          </style>
-          <dile-select class="customized">
-            <dile-select-item value="spain">Spain</dile-select-item>
-            <dile-select-item value="france">France</dile-select-item>
-            <dile-select-item value="germany">Germany</dile-select-item>
-          </dile-select>
-
-          <h2>Width customized to 100%</h2>
-          <style>
-            .customized2 {
-              --dile-select-width: 100%;
-            }
-          </style>
-          <dile-select class="customized2">
-            <dile-select-item value="spain">Spain</dile-select-item>
-            <dile-select-item value="france">France</dile-select-item>
-            <dile-select-item value="germany">Germany</dile-select-item>
-          </dile-select>
-
-          <h2>Width customized to 150px</h2>
-          <style>
-            .customized3 {
-              --dile-select-width: 150px;
-            }
-          </style>
-          <dile-select class="customized3">
-            <dile-select-item value="spain">Spain</dile-select-item>
-            <dile-select-item value="france">France</dile-select-item>
-            <dile-select-item value="germany">Germany</dile-select-item>
-            <dile-select-item value="congo">Democratic Republic of the Congo</dile-select-item>
-          </dile-select>
         </div>
+        <h1>More info...</h1> 
+        <p>
+          You will find more information in Github: 
+        </p>
+        <p>
+          <a href="https://github.com/Polydile/dile-select">https://github.com/Polydile/dile-select</a>
+        </p> 
+
       `,
       document.querySelector('#demo')
     );
