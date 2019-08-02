@@ -1,0 +1,30 @@
+{
+  "name": "dile-select",
+  "version": "0.0.0",
+  "description": "Webcomponent dile-select following open-wc recommendations",
+  "author": "@midesweb",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
+    "start:compatibility": "es-dev-server --app-index demo/index.html --compatibility all --node-resolve --open --watch",
+    "site:build": "npm run storybook:build",
+    "storybook": "start-storybook -p 9001",
+    "storybook:build": "build-storybook -o _site -s storybook-static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Polydile/dile-select.git"
+  },
+  "dependencies": {
+    "dile-close-document-click-mixin": "^1.0.0",
+    "lit-element": "^2.0.1",
+    "lit-html": "^1.0.0"
+  },
+  "devDependencies": {
+    "es-dev-server": "^1.5.0",
+    "@open-wc/demoing-storybook": "^0.3.0"
+  },
+  "homepage": "https://github.com/Polydile/dile-select"
+}

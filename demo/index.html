@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #fafafa;
+      font-family: 'Lato', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <select name="" id="">
+    <option value="">hoolasdsd dsdsadasd</option>
+    <option value="">hoolasdsd dsdsadasd</option>
+    <option value="">hoolasdsd dsdsadasd</option>
+    <option value="">hoolasdsd dsdsadasd</option>
+    <option value="">hoolasdsd dsdsadasd</option>
+  </select>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit-html';
+    import '../dile-select.js';
+
+    render(
+      html`
+        
+        <h1>Redondeados y con borde</h1>
+        <style>
+          .con-borde-y-redondeado dile-select {
+            --dile-select-border-width: 2px;
+            --dile-select-border-color: blue;
+          }
+        </style>
+        <div class="con-borde-y-redondeado">
+          <h2>Regular select component</h1> 
+          <dile-select placeholder="Select one">
+            <dile-select-item value="one">First item</dile-select-item>
+            <dile-select-item value="two">Second item</dile-select-item>
+            <dile-select-item value="three">The third item (with large text)</dile-select-item>
+            <dile-select-item value="more">One more</dile-select-item>
+          </dile-select>
+
+          <h2>Initial value configured to "pear"</h2>
+          <dile-select value="pear">
+            <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
+            <dile-select-item value="pear">Pear</dile-select-item>
+            <dile-select-item value="apple">Apple</dile-select-item>
+            <dile-select-item value="Orange">Orange</dile-select-item>
+            <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 300px</h2>
+          <style>
+            .customizeda {
+              --dile-select-width: 300px;
+              --dile-select-border-color: red;
+              --dile-select-background-color: #fff;
+              --dile-select-hover-background-color: #ffffee;
+              --dile-select-selected-background-color: #f5f5cc;
+            }
+          </style>
+          <dile-select class="customizeda" uninitialized>
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 100%</h2>
+          <style>
+            .customized2 {
+              --dile-select-width: 100%;
+              --dile-select-selected-background-color: #356;
+              --dile-select-selected-text-color: #fff; 
+            }
+          </style>
+          <dile-select class="customized2" placeholder="Select your country">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 150px</h2>
+          <style>
+            .customized3 {
+              --dile-select-width: 150px;
+            }
+          </style>
+          <dile-select class="customized3" placeholder="Select your country">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+            <dile-select-item value="congo">Democratic Republic of the Congo</dile-select-item>
+          </dile-select>
+        </div>  
+        
+
+        
+        <style>
+          .conborde dile-select {
+            --dile-select-border-radius: 0;
+            --dile-select-border-width: 2px;
+            --dile-select-border-color: #303030;
+          }
+        </style>
+        <div class="conborde">
+          <h2>Regular select component</h1> 
+          <dile-select>
+            <dile-select-item value="one">First item</dile-select-item>
+            <dile-select-item value="two">Second item</dile-select-item>
+            <dile-select-item value="three">The third item (with large text)</dile-select-item>
+            <dile-select-item value="more">One more</dile-select-item>
+          </dile-select>
+
+          <h2>Initial value configured to "pear"</h2>
+          <dile-select value="pear">
+            <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
+            <dile-select-item value="pear">Pear</dile-select-item>
+            <dile-select-item value="apple">Apple</dile-select-item>
+            <dile-select-item value="Orange">Orange</dile-select-item>
+            <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 300px</h2>
+          <style>
+            dile-select.customizedx {
+              --dile-select-width: 300px;
+              --dile-select-border-color: #3cd;
+              --dile-select-border-width: 4px;
+            }
+          </style>
+          <dile-select class="customizedx">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 100%</h2>
+          <style>
+            .customized2 {
+              --dile-select-width: 100%;
+            }
+          </style>
+          <dile-select class="customized2">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 150px</h2>
+          <style>
+            .customized3 {
+              --dile-select-width: 150px;
+            }
+          </style>
+          <dile-select class="customized3">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+            <dile-select-item value="congo">Democratic Republic of the Congo</dile-select-item>
+          </dile-select>
+        </div>  
+        
+
+
+        <style>
+          .sinborderectangular dile-select {
+            --dile-select-border-radius: 0;
+          }
+        </style>
+        <div class="sinborderectangular">
+          <h2>Regular select component</h1> 
+          <dile-select>
+            <dile-select-item value="one">First item</dile-select-item>
+            <dile-select-item value="two">Second item</dile-select-item>
+            <dile-select-item value="three">The third item (with large text)</dile-select-item>
+            <dile-select-item value="more">One more</dile-select-item>
+          </dile-select>
+
+          <h2>Initial value configured to "pear"</h2>
+          <dile-select value="pear">
+            <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
+            <dile-select-item value="pear">Pear</dile-select-item>
+            <dile-select-item value="apple">Apple</dile-select-item>
+            <dile-select-item value="Orange">Orange</dile-select-item>
+            <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 300px</h2>
+          <style>
+            .customized {
+              --dile-select-width: 300px;
+              
+            }
+          </style>
+          <dile-select class="customized">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 100%</h2>
+          <style>
+            .customized2 {
+              --dile-select-width: 100%;
+            }
+          </style>
+          <dile-select class="customized2">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 150px</h2>
+          <style>
+            .customized3 {
+              --dile-select-width: 150px;
+            }
+          </style>
+          <dile-select class="customized3">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+            <dile-select-item value="congo">Democratic Republic of the Congo</dile-select-item>
+          </dile-select>
+        </div>
+
+        
+
+
+        <div>
+          <h2>Regular select component</h1> 
+          <dile-select>
+            <dile-select-item value="one">First item</dile-select-item>
+            <dile-select-item value="two">Second item</dile-select-item>
+            <dile-select-item value="three">The third item (with large text)</dile-select-item>
+            <dile-select-item value="more">One more</dile-select-item>
+          </dile-select>
+
+          <h2>Initial value configured to "pear"</h2>
+          <dile-select value="pear" style="--dile-select-width: 100%;">
+            <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
+            <dile-select-item value="pear">Pear</dile-select-item>
+            <dile-select-item value="apple">Apple</dile-select-item>
+            <dile-select-item value="Orange">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi quaerat iusto voluptatum, corrupti cumque accusamus ut doloremque reprehenderit architecto distinctio</dile-select-item>
+            <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 300px</h2>
+          <style>
+            .customized {
+              --dile-select-width: 300px;
+              
+            }
+          </style>
+          <dile-select class="customized">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 100%</h2>
+          <style>
+            .customized2 {
+              --dile-select-width: 100%;
+            }
+          </style>
+          <dile-select class="customized2">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+          </dile-select>
+
+          <h2>Width customized to 150px</h2>
+          <style>
+            .customized3 {
+              --dile-select-width: 150px;
+            }
+          </style>
+          <dile-select class="customized3">
+            <dile-select-item value="spain">Spain</dile-select-item>
+            <dile-select-item value="france">France</dile-select-item>
+            <dile-select-item value="germany">Germany</dile-select-item>
+            <dile-select-item value="congo">Democratic Republic of the Congo</dile-select-item>
+          </dile-select>
+        </div>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
