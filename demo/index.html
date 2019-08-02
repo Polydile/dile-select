@@ -26,13 +26,13 @@
         <style>
           .con-borde-y-redondeado dile-select {
             --dile-select-border-width: 2px;
-            --dile-select-border-color: blue;
+            --dile-select-border-color: #369;
           }
         </style>
         <div class="con-borde-y-redondeado">
           <h2>Regular uninitialized component</h2> 
           <p>The component is uninitialized, so the placeholder apears and initial value is undefined.</p>
-          <dile-select placeholder="Select one" uninitialized @dile-select-changed="${e => {
+          <dile-select label="Choose your best option:" placeholder="Select one" uninitialized @dile-select-changed="${e => {
             document.getElementById('msg').innerText = `Seleccionado ${e.detail.selectedText} (value: ${e.detail.value})`;
           }}">
             <dile-select-item value="one">First item</dile-select-item>
@@ -75,7 +75,7 @@
               --dile-select-selected-background-color: #f5f5cc;
             }
           </style>
-          <dile-select class="customizeda" placeholder="Select your country">
+          <dile-select class="customizeda" placeholder="Select your country" label="Country of residence:">
             <dile-select-item value="spain">Spain</dile-select-item>
             <dile-select-item value="france">France</dile-select-item>
             <dile-select-item value="germany">Germany</dile-select-item>

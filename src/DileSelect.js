@@ -35,6 +35,13 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
       .main:hover{
         background-color: var(--dile-select-hover-background-color, #eee);
       }
+      label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: var(--dile-select-label-font-size, 1em);
+        color: var(--dile-select-label-color, #59e);
+        font-weight: var(--dile-select-label-font-weight, normal);
+      }
       
       span {
         padding-right: var(--dile-select-padding-x, 10px);
@@ -80,6 +87,9 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
         display: inline;
         opacity: 0.3;
       }
+      div.errored {
+        border-color: var(--dile-select-error-border-color, #c00);
+      }  
     `;
   }
 
@@ -89,6 +99,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
       name: { type: String },
       opened: { type: Boolean },
       selectedText: { type: String },
+      label: { type: String },
       placeholder: { type: String },
       uninitialized: { type: Boolean },
     };
@@ -135,8 +146,12 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
   }
   render() {
     return html`
+      ${this.label
+        ? html`<label>${this.label}</label>`
+        : ''
+      }
       <section class="select" @dile-select-item-selected="${this.userItemSelected}" @_dile.select-item-anounce-width="${this.manageWidth}">
-        <div class="main ${this.opened ? 'mainOpened' : ''}" @click=${this._toggleHandler} id="main">
+        <div class="main ${this.opened ? 'mainOpened' : ''} ${ this.errored ? 'errored' : '' }" @click=${this._toggleHandler} id="main">
           <div id="maincontent">
             <span>
               ${this.opened || this.uninitialized
