@@ -13,25 +13,11 @@ npm i dile-select
   import 'dile-select/dile-select.js';
 </script>
 
-<dile-select></dile-select>
-```
-
-## Testing using karma (if applied by author)
-```bash
-npm run test
-```
-
-## Testing using karma via browserstack (if applied by author)
-```bash
-npm run test:bs
-```
-
-## Demoing using storybook (if applied by author)
-```bash
-npm run storybook
-```
-
-## Linting (if applied by author)
-```bash
-npm run lint
+<dile-select label="Favorite fruit:" value="pear" class="custom" placeholder="Select a fruit" @dile-select-changed="${this.selectChanged}">
+  <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
+  <dile-select-item value="pear">Pear</dile-select-item>
+  <dile-select-item value="apple">Apple</dile-select-item>
+  <dile-select-item value="orange">Orange</dile-select-item>
+  <dile-select-item value="passion_fruit">True passion fruit</dile-select-item>
+</dile-select>
 ```
