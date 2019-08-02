@@ -14,7 +14,10 @@ export class DileSelectItem  extends LitElement {
         background-color: var(--dile-select-background-color, #ddd);
       }
       div {
-        padding: var(--dile-select-padding, 10px);
+        padding-right: var(--dile-select-padding-x, 10px);
+        padding-left: var(--dile-select-padding-x, 10px);
+        padding-bottom: var(--dile-select-padding-y, 10px);
+        padding-top: var(--dile-select-padding-y, 10px);
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;

@@ -12,13 +12,7 @@
   </style>
 </head>
 <body>
-  <select name="" id="">
-    <option value="">hoolasdsd dsdsadasd</option>
-    <option value="">hoolasdsd dsdsadasd</option>
-    <option value="">hoolasdsd dsdsadasd</option>
-    <option value="">hoolasdsd dsdsadasd</option>
-    <option value="">hoolasdsd dsdsadasd</option>
-  </select>
+
   <div id="demo"></div>
 
   <script type="module">
@@ -37,20 +31,35 @@
         </style>
         <div class="con-borde-y-redondeado">
           <h2>Regular select component</h1> 
-          <dile-select placeholder="Select one">
+          <dile-select placeholder="Select one" uninitialized @dile-select-changed="${e => {
+            document.getElementById('msg').innerText = `Seleccionado ${e.detail.selectedText} (value: ${e.detail.value})`;
+          }}">
             <dile-select-item value="one">First item</dile-select-item>
             <dile-select-item value="two">Second item</dile-select-item>
             <dile-select-item value="three">The third item (with large text)</dile-select-item>
             <dile-select-item value="more">One more</dile-select-item>
           </dile-select>
 
+          <div id="msg"></div>
+
+          <style>
+            dile-select.custom {
+              --dile-select-selected-background-color: #275;
+              --dile-select-selected-text-color: #fff; 
+              --dile-select-text-color: #fff; 
+              --dile-select-background-color: #156;
+              --dile-select-hover-background-color: #666;
+              --dile-select-padding-x: 5px;
+              --dile-select-padding-y: 3px;
+            }
+          </style>
           <h2>Initial value configured to "pear"</h2>
-          <dile-select value="pear">
+          <dile-select value="pear" class="custom" placeholder="Select a fruit">
             <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
             <dile-select-item value="pear">Pear</dile-select-item>
             <dile-select-item value="apple">Apple</dile-select-item>
-            <dile-select-item value="Orange">Orange</dile-select-item>
-            <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
+            <dile-select-item value="orange">Orange</dile-select-item>
+            <dile-select-item value="passion_fruit">True passion fruit</dile-select-item>
           </dile-select>
 
           <h2>Width customized to 300px</h2>
@@ -120,7 +129,7 @@
             <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
             <dile-select-item value="pear">Pear</dile-select-item>
             <dile-select-item value="apple">Apple</dile-select-item>
-            <dile-select-item value="Orange">Orange</dile-select-item>
+            <dile-select-item value="orange">Orange</dile-select-item>
             <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
           </dile-select>
 
@@ -185,7 +194,7 @@
             <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
             <dile-select-item value="pear">Pear</dile-select-item>
             <dile-select-item value="apple">Apple</dile-select-item>
-            <dile-select-item value="Orange">Orange</dile-select-item>
+            <dile-select-item value="orange">Orange</dile-select-item>
             <dile-select-item value="passion_fruit">Passion fruit</dile-select-item>
           </dile-select>
 
@@ -240,7 +249,8 @@
             <dile-select-item value="more">One more</dile-select-item>
           </dile-select>
 
-          <h2>Initial value configured to "pear"</h2>
+          <h2>Element whith a big text... </h2>
+          <p>if you don't want to expand to much the interface, you will need to size it with --dile-select-width</p>
           <dile-select value="pear" style="--dile-select-width: 100%;">
             <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
             <dile-select-item value="pear">Pear</dile-select-item>

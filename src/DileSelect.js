@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit-element';
 import '../dile-select-item';
-import { DileCloseDocumentClickMixin } from './dile-close-document-click-mixin';
+import { DileCloseDocumentClickMixin } from 'dile-close-document-click-mixin/dile-close-document-click-mixin.js';
 
 export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
   static get styles() {
@@ -37,7 +37,10 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
       }
       
       span {
-        padding: var(--dile-select-padding, 10px);
+        padding-right: var(--dile-select-padding-x, 10px);
+        padding-left: var(--dile-select-padding-x, 10px);
+        padding-bottom: var(--dile-select-padding-y, 10px);
+        padding-top: var(--dile-select-padding-y, 10px);
         width: 100%;
         display: block;
         white-space: nowrap;
@@ -83,8 +86,9 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
   static get properties() {
     return {
       value: { type: String },
+      name: { type: String },
       opened: { type: Boolean },
-      textSelected: { type: String },
+      selectedText: { type: String },
       placeholder: { type: String },
       uninitialized: { type: Boolean },
     };
@@ -92,11 +96,11 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
 
   constructor() {
     super();
-    this.createItemsArray();
+    this._createItemsArray();
     this.placeholder = 'Select';
   }
 
-  createItemsArray() {
+  _createItemsArray() {
       this.items = [];
       let domItems = this.children;
       for (let ele of domItems) {
@@ -110,10 +114,10 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
     } else if (!this.uninitialized) {
       this.selectItem(0);
     }
-    this.setWidthInItems();
+    this._setWidthInItems();
   }
 
-  setWidthInItems() {
+  _setWidthInItems() {
     if(getComputedStyle(this).getPropertyValue('--dile-select-width')) {
       let targetWidth = this.shadowRoot.getElementById('maincontent').clientWidth;
       for(let ele of this.items) {
@@ -130,7 +134,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
             <span>
               ${this.opened || this.uninitialized
                 ? html`<div class="placeholder">${this.placeholder}&nbsp;</div>`
-                : html`${this.textSelected}`
+                : html`${this.selectedText}`
               }
               </span>
             <div class="ctrl ${this.opened ? 'crltOpened' : ''}">${this.arrowIcon}</div>
@@ -147,7 +151,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
   _toggleHandler(e) {
     e.stopPropagation();
     this.closeOthers();
-    this.setWidthInItems();
+    this._setWidthInItems();
     this.opened = !this.opened;
   }
 
@@ -164,8 +168,16 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
     for(let ele of this.items) {
       if(ele.value == value && !alreadySelected) {
         ele.selected = true;
-        this.textSelected = ele.textContent;
+        this.selectedText = ele.textContent;
         this.value = ele.value;
+        this.dispatchEvent(new CustomEvent('dile-select-changed', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            selectedText: this.selectedText,
+            value: this.value
+          }
+        }));
       } else {
         ele.selected = false
       }
@@ -181,7 +193,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
     this.opened = false;
   }
   open() {
-    this.setWidthInItems();
+    this._setWidthInItems();
     this.opened = true;
   }
 
