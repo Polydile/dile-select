@@ -18,22 +18,42 @@
   <script type="module">
     import { html, render } from 'lit-html';
     import '../dile-select.js';
+    import '../dile-select-multiple.js';
 
     render(
       html`
         
         <h1>&lt;dile-select&gt; demos</h1>
+
+
+        <h2>Dile select multiple</h2>
+        <dile-select-multiple uninitialized placeholder="Favorite cars for the people!!">
+          <dile-select-multiple-item value="general-motors">General Motors</dile-select-multiple-item>
+          <dile-select-multiple-item value="volkswagen">Volkswagen</dile-select-multiple-item>
+          <dile-select-multiple-item value="toyota">Toyota</dile-select-multiple-item>
+          <dile-select-multiple-item value="fiat">Fiat</dile-select-multiple-item>
+          <dile-select-multiple-item value="renault">Renault</dile-select-multiple-item>
+        </dile-select-multiple>
+
+        <dile-select uninitialized placeholder="Favorite cars for the people!!">
+          <dile-select-item value="general-motors">General Motors</dile-select-item>
+          <dile-select-item value="volkswagen">Volkswagen</dile-select-item>
+          <dile-select-item value="toyota">Toyota</dile-select-item>
+          <dile-select-item value="fiat">Fiat</dile-select-item>
+          <dile-select-item value="renault">Renault</dile-select-item>
+        </dile-select>
+
         <style>
           .con-borde-y-redondeado dile-select {
             --dile-select-border-width: 2px;
             --dile-select-border-color: #369;
           }
         </style>
-        <div class="con-borde-y-redondeado" @dile-select-changed="${e => console.log('...', e.target.name) }">
+        <div class="con-borde-y-redondeado">
           <h2>Regular uninitialized component</h2> 
           <p>The component is uninitialized, so the placeholder apears and initial value is undefined.</p>
-          <dile-select name="firstselect" label="Choose your best option:" placeholder="Select one" uninitialized @dile-select-changed="${e => {
-            document.getElementById('msg').innerText = `Seleccionado ${e.detail.selectedText} (value: ${e.detail.value})`;
+          <dile-select name="firstselect" label="Choose your best option:" placeholder="Select one"  @dile-select-changed="${e => {
+            document.getElementById('msg').innerText = `Seleccionado ${e.detail.selectedText} (value: ${e.detail.value}) name: ${e.target.name}`;
           }}">
             <dile-select-item value="one">First item</dile-select-item>
             <dile-select-item value="two">Second item</dile-select-item>

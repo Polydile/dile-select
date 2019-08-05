@@ -18,6 +18,7 @@
     "url": "https://github.com/Polydile/dile-select.git"
   },
   "dependencies": {
+    "dile-checkbox": "^1.2.0",
     "dile-close-document-click-mixin": "^1.0.0",
     "lit-element": "^2.0.1",
     "lit-html": "^1.0.0"
