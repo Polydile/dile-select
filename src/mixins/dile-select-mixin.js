@@ -135,4 +135,16 @@ export const DileSelectMixin = (Superclass) => class extends Superclass {
     this._setWidthInItems();
     this.opened = true;
   }
+
+  dispatchSelectedEvent() {
+    this.dispatchEvent(new CustomEvent('dile-select-changed', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        selectedText: this.selectedText,
+        value: this.value,
+        name: this.name,
+      }  
+    }));
+  }
 }
