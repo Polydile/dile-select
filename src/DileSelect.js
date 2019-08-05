@@ -88,7 +88,8 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
         opacity: 0.3;
       }
       div.errored {
-        border-color: var(--dile-select-error-border-color, #c00);
+        background-color: var(--dile-select-errored-background-color, #f66) !important;
+        color: var(--dile-select-errored-text-color, #fff) !important;
       }  
     `;
   }
@@ -102,6 +103,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
       label: { type: String },
       placeholder: { type: String },
       uninitialized: { type: Boolean },
+      errored: { type: Boolean },
     };
   }
 
@@ -150,7 +152,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
         ? html`<label>${this.label}</label>`
         : ''
       }
-      <section class="select" @dile-select-item-selected="${this.userItemSelected}" @_dile.select-item-anounce-width="${this.manageWidth}">
+      <section class="select" @dile-select-item-selected="${this._userItemSelected}" @_dile.select-item-anounce-width="${this._manageWidth}">
         <div class="main ${this.opened ? 'mainOpened' : ''} ${ this.errored ? 'errored' : '' }" @click=${this._toggleHandler} id="main">
           <div id="maincontent">
             <span>
@@ -159,7 +161,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
                 : html`${this.selectedText}`
               }
               </span>
-            <div class="ctrl ${this.opened ? 'crltOpened' : ''}">${this.arrowIcon}</div>
+            <div class="ctrl ${this.opened ? 'crltOpened' : ''}">${this._arrowIcon}</div>
           </div>
         </div>
         
@@ -177,13 +179,13 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
     this.opened = !this.opened;
   }
 
-  get arrowIcon() {
+  get _arrowIcon() {
     return html`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>`;
   }
 
   selectItem(value) {
     this.uninitialized = false;
-    if(! value) {
+    if(! value && this.items[0]) {
       value = this.items[0].value;
     }
     let alreadySelected = false;
@@ -200,13 +202,17 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
             value: this.value
           }
         }));
+        alreadySelected = true;
       } else {
         ele.selected = false
       }
     }
+    if(!alreadySelected) {
+      this.uninitialized = true;
+    }
   }
 
-  userItemSelected(e) {
+  _userItemSelected(e) {
     this.selectItem(e.detail.value);
     this.close();
   }
@@ -219,9 +225,9 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
     this.opened = true;
   }
 
-  manageWidth(e) {
+  _manageWidth(e) {
     if(this.offsetWidth < e.detail) {
-      let customBorder = this.getCustomBorder()
+      let customBorder = this._getCustomBorder()
       if(customBorder) {
         this.shadowRoot.getElementById('main').style.width = (e.detail + (customBorder * 2)) + 'px';
       } else {
@@ -230,7 +236,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
     }
   }
 
-  getCustomBorder() {
+  _getCustomBorder() {
     let customBorder = getComputedStyle(this).getPropertyValue('--dile-select-border-width');
     let borderVal = parseInt(customBorder);
     if(customBorder && !isNaN(borderVal) && borderVal) {
@@ -242,7 +248,7 @@ export class DileSelect extends DileCloseDocumentClickMixin(LitElement) {
   updated(changedProperties) {
     if(changedProperties.has('opened')) {
       let section = this.shadowRoot.querySelector('section');
-      let border = this.getCustomBorder();
+      let border = this._getCustomBorder();
       if(border && this.opened) {
         section.style.marginBottom = border + 'px';
       } else if(border) {
