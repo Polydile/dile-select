@@ -25,23 +25,15 @@
         
         <h1>&lt;dile-select&gt; demos</h1>
 
+        <dile-select value="pear" class="custom" placeholder="Select a fruit">
+            <dile-select-item value="kiwi">Kiwi fruit</dile-select-item>
+            <dile-select-item value="pear">Pear</dile-select-item>
+            <dile-select-item value="apple">Apple</dile-select-item>
+            <dile-select-item value="orange">Orange</dile-select-item>
+            <dile-select-item value="passion_fruit">True passion fruit</dile-select-item>
+          </dile-select>
 
-        <h2>Dile select multiple</h2>
-        <dile-select-multiple uninitialized placeholder="Favorite cars for the people!!">
-          <dile-select-multiple-item value="general-motors">General Motors</dile-select-multiple-item>
-          <dile-select-multiple-item value="volkswagen">Volkswagen</dile-select-multiple-item>
-          <dile-select-multiple-item value="toyota">Toyota</dile-select-multiple-item>
-          <dile-select-multiple-item value="fiat">Fiat</dile-select-multiple-item>
-          <dile-select-multiple-item value="renault">Renault</dile-select-multiple-item>
-        </dile-select-multiple>
-
-        <dile-select uninitialized placeholder="Favorite cars for the people!!">
-          <dile-select-item value="general-motors">General Motors</dile-select-item>
-          <dile-select-item value="volkswagen">Volkswagen</dile-select-item>
-          <dile-select-item value="toyota">Toyota</dile-select-item>
-          <dile-select-item value="fiat">Fiat</dile-select-item>
-          <dile-select-item value="renault">Renault</dile-select-item>
-        </dile-select>
+        
 
         <style>
           .con-borde-y-redondeado dile-select {
@@ -227,6 +219,26 @@
             <dile-select-item value="passion_fruit">True passion fruit</dile-select-item>
           </dile-select>
 
+
+          <h2>Dile select multiple</h2>
+        <dile-select-multiple placeholder="Select at least 1" label="Favorite cars">
+          <dile-select-multiple-item value="general-motors">General Motors</dile-select-multiple-item>
+          <dile-select-multiple-item value="volkswagen">Volkswagen</dile-select-multiple-item>
+          <dile-select-multiple-item value="toyota">Toyota</dile-select-multiple-item>
+          <dile-select-multiple-item value="fiat">Fiat</dile-select-multiple-item>
+          <dile-select-multiple-item value="renault">Renault</dile-select-multiple-item>
+        </dile-select-multiple>
+
+
+        <h2>Initialized dile select multiple</h2>
+        <dile-select-multiple placeholder="Select at least 1" label="Favorite cars" .value="${['toyota', 'fiat']}">
+          <dile-select-multiple-item value="general-motors">General Motors</dile-select-multiple-item>
+          <dile-select-multiple-item value="volkswagen">Volkswagen</dile-select-multiple-item>
+          <dile-select-multiple-item value="toyota">Toyota</dile-select-multiple-item>
+          <dile-select-multiple-item value="fiat">Fiat</dile-select-multiple-item>
+          <dile-select-multiple-item value="renault">Renault</dile-select-multiple-item>
+        </dile-select-multiple>
+        
         <h1>More info...</h1> 
         <p>
           You will find more information in Github: 

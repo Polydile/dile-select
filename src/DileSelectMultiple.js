@@ -29,6 +29,11 @@ export class DileSelectMultiple extends DileSelectMixin(DileCloseDocumentClickMi
     //this.close();
   }
 
+  firstUpdated() {
+    super.firstUpdated();
+    this.setSelectedOnItems();
+  }
+
   selectItem(value) {
     this.uninitialized = false;
     if(this.value.indexOf(value) != -1) {
@@ -38,6 +43,12 @@ export class DileSelectMultiple extends DileSelectMixin(DileCloseDocumentClickMi
       // El elemento no estaba, lo pongo
       this.value.push(value);
     }
+    this.setSelectedOnItems();
+    this.dispatchSelectedEvent();
+    
+  }
+
+  setSelectedOnItems() {
     for(let ele of this.items) {
       if(this.value.indexOf(ele.value) != -1) {
         // El elemento está entre los values
@@ -48,12 +59,10 @@ export class DileSelectMultiple extends DileSelectMixin(DileCloseDocumentClickMi
       }
     }
     this.selectedText = `${this.value.length} ${this.labelNumItem}`;
-    this.dispatchSelectedEvent();
     if(this.value.length == 0) {
       this.uninitialized = true;
     }
   }
-
 
   dispatchSelectedEvent() {
     this.dispatchEvent(new CustomEvent('dile-select-changed', {
