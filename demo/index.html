@@ -20,9 +20,20 @@
     import '../dile-select.js';
     import '../dile-select-multiple.js';
 
+    var yearsArray = [2018, 2019, 2020];
+    
     render(
       html`
-        
+      
+      <style>
+          .yearsselect {
+            --dile-select-width: 200px;
+          }
+        </style>
+        <dile-select class="yearsselect" value="2019" placeholder="Select year">
+          ${yearsArray.map( (year) => html`<dile-select-item value="${year}">${year}</dile-select-item>` )}
+        </dile-select>
+
         <h1>&lt;dile-select&gt; demos</h1>
 
         <dile-select value="pear" class="custom" placeholder="Select a fruit">

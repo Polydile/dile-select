@@ -11,6 +11,16 @@ export class DileSelect extends DileSelectMixin(DileCloseDocumentClickMixin(LitE
     }
   }
   
+  constructor() {
+    super();
+  
+    this.addEventListener('dile-select-item-initialized', (e) => {
+      if(this.value) {
+        this.selectItem(this.value);
+      }
+    })
+  }
+
   firstUpdated() {
     if(this.value) {
       this.selectItem(this.value);

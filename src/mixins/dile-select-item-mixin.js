@@ -19,6 +19,11 @@ export const DileSelectItemMixin = (Superclass) => class extends Superclass {
     if(!cssCustomWidth) {
       this.shadowRoot.querySelector('section').style.paddingRight = '45px';
     }
+    this.dispatchEvent(new CustomEvent('dile-select-item-initialized', {
+      bubbles: true,
+      composed: true,
+      detail: this
+    }));
   }
 
   render() {
