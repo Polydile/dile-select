@@ -60,6 +60,7 @@ export const dileSelectStyles = css`
     z-index: 2;
     border-bottom-left-radius: var(--dile-select-border-radius, 10px);
     border-bottom-right-radius: var(--dile-select-border-radius, 10px);
+    max-height: var(--dile-select-options-max-height, 250px);
   }
   .mainOpened {
     border-bottom-left-radius: 0;
@@ -73,6 +74,7 @@ export const dileSelectStyles = css`
     border-style: solid;
     border-top-width: 0;                
     height: auto;
+    overflow-y: auto;
   }
   .crltOpened {
     transform: rotate(180deg);
